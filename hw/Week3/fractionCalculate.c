@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int findGCD(int numerator, int denominator);
+long findGCD(long numerator, long denominator);
 
 int main(void) 
 {
     // Get user input
-    int numerator1, denominator1; 
+    long numerator1, denominator1; 
     char operator;
-    int numerator2, denominator2;
+    long numerator2, denominator2;
 
-    scanf("%d/%d %c %d/%d", &numerator1, &denominator1, &operator, &numerator2, &denominator2);
+    scanf("%ld/%ld %c %ld/%ld", &numerator1, &denominator1, &operator, &numerator2, &denominator2);
 
-    int numerator, denominator;
+    long numerator, denominator;
     // Calculate the fraction 
     if ((numerator1 == numerator2) && (denominator1 == denominator2) && (operator == '-'))
     {
-        printf("%d/%d - %d/%d = 0\n", numerator1, denominator1, numerator2, denominator2);
+        printf("%ld/%ld - %ld/%ld = 0\n", numerator1, denominator1, numerator2, denominator2);
         return 1;
     }
     // While op is '+' and '-'
@@ -29,8 +29,8 @@ int main(void)
             }
             else
             {
-                int new_numerator1 = numerator1 * denominator2;
-                int new_numerator2 = numerator2 * denominator1;
+                long new_numerator1 = numerator1 * denominator2;
+                long new_numerator2 = numerator2 * denominator1;
                 denominator = denominator1 * denominator2;
                 numerator = new_numerator1 + new_numerator2;
             }
@@ -43,8 +43,8 @@ int main(void)
             }
             else
             {
-                int new_numerator1 = numerator1 * denominator2;
-                int new_numerator2 = numerator2 * denominator1;
+                long new_numerator1 = numerator1 * denominator2;
+                long new_numerator2 = numerator2 * denominator1;
                 denominator = denominator1 * denominator2;
                 numerator = new_numerator1 - new_numerator2;
             } 
@@ -60,12 +60,12 @@ int main(void)
     }
 
     // Simplest the fraction
-    int factor;
+    long factor;
     if (numerator >= denominator)
     {
         if (numerator % denominator == 0)
         {
-            printf("%d/%d %c %d/%d = %d\n", numerator1, denominator1, operator, numerator2, denominator2, numerator/denominator);
+            printf("%ld/%ld %c %ld/%ld = %ld\n", numerator1, denominator1, operator, numerator2, denominator2, numerator/denominator);
             return 0;
         }
         factor = findGCD(numerator, denominator);
@@ -78,19 +78,18 @@ int main(void)
     numerator  = numerator / factor;
     denominator = denominator / factor;
 
-    printf("%d/%d %c %d/%d = %d/%d\n", numerator1, denominator1, operator, numerator2, denominator2, numerator, denominator);
+    printf("%ld/%ld %c %ld/%ld = %ld/%ld\n", numerator1, denominator1, operator, numerator2, denominator2, numerator, denominator);
 }
 
-int findGCD(int big, int small) 
+long findGCD(long big, long small) 
 {
-    big = abs(big);
-    small = abs(small);
+    big = labs(big);
+    small = labs(small);
     while (big % small != 0) 
     {
-        int new = big % small;
+        long new = big % small;
         big = small;
         small = new;
     }
     return small;
 }
-
