@@ -14,21 +14,21 @@ int main(void)
     {
         case '+':
             ans = n1 + n2;
-            printf("%d\n", ans);
             break;
         case '-':
             ans = n1 - n2;
-            printf("%d\n", ans);
             break;
         case '*':
             ans = n1 * n2;
-            printf("%d\n", ans);
             break;
         case '/':
             ans = n1 / n2;
-            printf("%d\n", ans);
+            break;
+        case '%':
+            ans = n1 % n2;
             break;
     }
+    printf("%d\n", ans);
 
     return 0;
 
