@@ -3,8 +3,8 @@
 #include <stdio.h>  
 #include <stdlib.h>  
 
-void reverse(char str[100], int start, int end); 
-int countLength(char str[100]);
+void reverse(char str[], int, int); 
+int countLength(char str[]);
 
 int main( )  
 {   char str[100];  
@@ -18,7 +18,7 @@ int main( )
   
 /* PRESET CODE END - NEVER TOUCH CODE ABOVE */  
 
-void reverse(char str[100], int start, int end)
+void reverse(char str[], int start, int end)
 {
     int arrayLength = countLength(str);
 
@@ -27,12 +27,12 @@ void reverse(char str[100], int start, int end)
         return;
     }
 
-    if (end > arrayLength)
+    else if (end >= arrayLength)
     {
-        return;
+        reverse(str, start, end - 1);
     }
 
-    if (start < 0)
+    else if (start < 0)
     {
         return;
     }
@@ -47,7 +47,7 @@ void reverse(char str[100], int start, int end)
     }
 }
 
-int countLength(char str[100])
+int countLength(char str[])
 {
     int counter = 0;
     while (str[counter] != '\0')
