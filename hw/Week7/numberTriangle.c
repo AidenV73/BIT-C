@@ -8,8 +8,9 @@ int main(void)
     int start, row;
     scanf("%d %d", &start, &row);
 
-    if (start >= 10)
+    if (row == 1)
     {
+        printf("%d\n", start);
         return 1;
     }
 
