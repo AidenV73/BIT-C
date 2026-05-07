@@ -29,12 +29,12 @@ int main(void)
         decode(length, code, result);
     }
 
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < length - 1; i++)
     {
         printf("%d ", result[i]);
     }
 
-    printf("\n");
+    printf("%d\n", result[length - 1]);
 
 }
 

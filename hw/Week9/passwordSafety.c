@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int checkSafety(char password[15]);
 int lengthSmallThanSix(char password[15]);
@@ -10,11 +11,15 @@ int main(void)
 
     scanf("%d", &n);
 
-    char password[n][15];
+    char password[n][50];
+
+    // Clean "\n"
+    getchar();
 
     for (int i = 0; i < n; i++)
     {
-        scanf("%s", password[i]);
+        fgets(password[i], sizeof(password[i]), stdin);
+        password[i][strcspn(password[i], "\n")] = '\0';
     }
 
     for (int i = 0; i < n; i++)
@@ -22,12 +27,12 @@ int main(void)
         int result = checkSafety(password[i]);
         if (result == 0)
         {
-            printf("Not safe");
+            printf("Not Safe");
         }
 
         else if (result == 1)
         {
-            printf("Medium safe");
+            printf("Medium Safe");
         }
 
         else if (result == 2)
@@ -40,7 +45,7 @@ int main(void)
 }
 
 // Return 0 if not safe, 1 if medium safe, 2 if safe
-int checkSafety(char password[15])
+int checkSafety(char password[])
 {
     int count_char_type = countCharType(password);
 
@@ -83,13 +88,14 @@ int lengthSmallThanSix(char password[15])
 }
 
 // Return count of char type in password ({0~9}, {a-z, A-Z}, {else})
-int countCharType(char password[15])
+int countCharType(char password[])
 {
     int count = 0;
     int has_number = 0;
-    int has_alphabet = 0;
+    int has_big_alpha = 0;
+    int has_small_alpha = 0;
     int has_symbol = 0;
-    for (int i = 0; i < 15; i++)
+    for (int i = 0; i < 50; i++)
     {
         char c = password[i];
         // Reached end 
@@ -105,9 +111,14 @@ int countCharType(char password[15])
         }
 
         // If password[i] is alphabet
-        else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+        else if (c >= 'a' && c <= 'z')
         {
-            has_alphabet = 1;
+            has_small_alpha = 1;
+        }
+
+        else if (c >= 'A' && c <= 'Z')
+        {
+            has_big_alpha = 1;
         }
 
         else
@@ -116,7 +127,7 @@ int countCharType(char password[15])
         }
     }
 
-    count = has_number + has_alphabet + has_symbol;
+    count = has_number + has_small_alpha + has_big_alpha + has_symbol;
 
     return count;
 }
