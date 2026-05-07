@@ -1,33 +1,22 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
-    // Get user input
-    int n;
-    scanf("%d", &n);
-    
-    char a[12];
-    int i = 0;
+    char a[100];
+    scanf("%s", a);
 
-    // Make it an array and find max
-    while (n > 0)
+    int len = strlen(a);
+
+    for (int i = 0; i < len; i++)
     {
-        a[i] = (n % 10) + '0';
-        n = n / 10;
-        i += 1;
-    }
-
-    a[i] = '\0';
-
-    for (int j = 0; j < i; j++)
-    {
-        for (int k = j; k < i; k++)
+        for (int j = 0; j < len - i - 1; j++)
         {
-            if (a[j] < a[k])
+            if (a[j + 1] > a[j])
             {
-                char tmp = a[j];
-                a[j] = a[k];
-                a[k] = tmp;
+                char tmp = a[j + 1];
+                a[j + 1] = a[j];
+                a[j] = tmp;
             }
         }
     }
