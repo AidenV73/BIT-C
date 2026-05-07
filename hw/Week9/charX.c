@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+int isChar(char c);
 void printSpace(int i);
 char addChar(char c, int n);
 
@@ -9,6 +10,12 @@ int main(void)
     char c;
     
     scanf("%d %c", &height, &c);
+
+    if (isChar(c) == 0)
+    {
+        printf("input error.\n");
+        return 1;
+    }
 
     // Calculate char starting point
     c = addChar(c, height - 1);
@@ -61,6 +68,21 @@ int main(void)
     }
 }
 
+// Return 1 if param is char, else return 0
+int isChar(char c)
+{
+    if (c <= 'z' && c >= 'a')
+    {
+        return 1;
+    }
+
+    if (c >= 'A' && c <= 'Z')
+    {
+        return 1;
+    }
+
+    return 0;
+}
 // Print space
 void printSpace(int i)
 {
