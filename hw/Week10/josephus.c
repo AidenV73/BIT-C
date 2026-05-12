@@ -10,7 +10,7 @@ int main(void)
     
     int index = josephus(count, number);
 
-    printf("The left child is No.%d\n", index + 1);
+    printf("The left child is NO %d.\n", index + 1);
     return 0;
 }
 
