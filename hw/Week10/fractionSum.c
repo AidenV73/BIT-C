@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-float sumCalculate(int n);
+double sumCalculate(int n);
 
 int main(void)
 {
@@ -8,12 +8,12 @@ int main(void)
 
     scanf("%d", &n);
 
-    float result = sumCalculate(n);
+    double result = sumCalculate(n);
     
     printf("sum=%.6f\n", result);
 }
 
-float sumCalculate(int n)
+double sumCalculate(int n)
 {
     if (n == 1)
     {
