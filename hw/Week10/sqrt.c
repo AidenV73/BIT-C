@@ -1,23 +1,22 @@
-#include <math.h>
-#include <stdio.h>
+/* PRESET CODE BEGIN - NEVER TOUCH CODE BELOW */  
+ 
+#include <stdio.h>  
+  
+double my_sqrt(double, double, double);  
+  
+int main(int argc, char **argv)  
+{  
+   double x, e;  
+   scanf("%lf,%lf", &x, &e);  
+   printf("%.8lf\n", my_sqrt(x, x/2, e));  
+   return 0;  
+}  
+  
+/* PRESET CODE END - NEVER TOUCH CODE ABOVE */  
 
-double squareroot(double n, double guess, double error);
-
-int main(void)
-{
-    double n; 
-    scanf("%lf", &n);
-
-    double error;
-    scanf("%lf", &error);
-
-    double result = squareroot(n, n / 2, error);
-
-    printf("%.8lf\n", result);
-}
 
 // Return sqrt of n
-double squareroot(double n, double guess, double error)
+double my_sqrt(double n, double guess, double error)
 {
     // If guess is good enough
     if (fabs((guess * guess) - n) < error)
@@ -27,7 +26,7 @@ double squareroot(double n, double guess, double error)
 
     else 
     {
-        return squareroot(n, 0.5 * (guess + (n / guess)), error);
+        return my_sqrt(n, 0.5 * (guess + (n / guess)), error);
     }
 }
 

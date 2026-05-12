@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void printSpace(int n);
+int addNum(int n);
 
 int main(void)
 {
@@ -10,6 +11,12 @@ int main(void)
     {
         printf("input error\n");
         return 2;
+    }
+
+    if (n >= 10)
+    {
+        printf("input error\n");
+        return 1;
     }
 
     // Length of half shape but not include the mid line
@@ -37,7 +44,7 @@ int main(void)
         printf("%d", current_num);
         printSpace((2 * length) - ((2 * i) + 1));
         printf("%d", current_num);
-        current_num += 1;
+        current_num = addNum(current_num);
         printf("\n");
     }
 
@@ -49,7 +56,7 @@ int main(void)
     }
     printSpace(midSpaceCount);
     printf("%d\n", current_num);
-    current_num += 1;
+    current_num = addNum(current_num);
 
     // Print last
     for (int i = 0; i < length; i++)
@@ -65,13 +72,23 @@ int main(void)
         printf("%d", current_num);
         printSpace((2 * i) + 1);
         printf("%d", current_num);
-        current_num += 1;
+        current_num = addNum(current_num);
         printf("\n");
     }
 
     return 0;
 }
 
+int addNum(int n)
+{
+    n++;
+    if (n == 10)
+    {
+        return 1;
+    }
+
+    return n;
+}
 void printSpace(int n)
 {
     if (n == 0)
