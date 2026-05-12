@@ -16,6 +16,11 @@ int main(void)
             break;
         }
 
+        if (field_count != 1)
+        {
+            printf("\n");
+        }
+
         char map[row][col];
         for (int i = 0; i < row; i++)
         {
@@ -68,11 +73,12 @@ char mineCount(int row, int col, int x1, int y1, char map[row][col])
     {
         for (int j = -1; j <= 1; j++)
         {
+
             int neighbor_x = x1 + i;
             int neighbor_y = y1 + j;
 
             // Check if not out of map
-            if ((neighbor_x > -1) && !(neighbor_x >= col) && (neighbor_y > - 1) && !(neighbor_y >= row))
+            if ((neighbor_x > -1) && !(neighbor_x >= row) && (neighbor_y > - 1) && !(neighbor_y >= col))
             {
                 if (map[neighbor_x][neighbor_y] == '*')
                 {
