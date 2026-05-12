@@ -36,7 +36,12 @@ int main(void)
         day_count += countDay(end_year, end_month, end_day);
     }
 
-    printf("%d\n", day_count);
+    if (day_count == 1)
+    {
+        printf("%d day\n", day_count);
+        return 0;
+    }
+    printf("%d days\n", day_count);
     return 0;
 
 }   

@@ -27,7 +27,7 @@ int main(void)
 
     for (int i = 0; i < testCount; i++)
     {
-        printf("%.2f\n", ans[i]);
+        printf("%.1f\n", ans[i]);
     }
 }
 
